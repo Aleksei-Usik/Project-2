@@ -48,7 +48,7 @@ func main_page(w http.ResponseWriter, r *http.Request) {
 
 	for i, task := range tasks {
 		datt[i].Task = task
-		datt[i].Time = task.Deadline.Format("01-02-06 15:04")
+		datt[i].Time = task.Deadline.Format("02-01-06 15:04")
 	}
 
 	pageVariables := struct {
@@ -112,11 +112,13 @@ func tasker(w http.ResponseWriter, r *http.Request) {
 			}
 
 		} else {
-			deadlineRFC3339 := deadline.Format(time.RFC3339)
+			deadlineRFC3339 := url.QueryEscape(deadline.Format(time.RFC3339))
 
 			email := url.QueryEscape(session.Values["email"].(string))
+			title := url.QueryEscape(r.FormValue("title"))
+			description := url.QueryEscape(r.FormValue("description"))
 
-			resp, err := http.Get(fmt.Sprintf("http://localhost:8080/createTask?email=%s&title=%s&description=%s&deadline=%s", email, r.FormValue("title"), r.FormValue("description"), deadlineRFC3339))
+			resp, err := http.Get(fmt.Sprintf("http://localhost:8080/createTask?email=%s&title=%s&description=%s&deadline=%s", email, title, description, deadlineRFC3339))
 			if err != nil {
 				fmt.Println(err)
 				session.Values["message"] = fmt.Sprint(err)
@@ -446,7 +448,8 @@ func del_user(w http.ResponseWriter, r *http.Request) {
 	email := url.QueryEscape(session.Values["email"].(string))
 	resp, err := http.Get(fmt.Sprintf("http://localhost:8080/delUser?email=%s", email))
 	if err != nil || resp.StatusCode != http.StatusOK {
-		session.Values["message"] = "Ошибка сервера"
+		session.Values["message"] = fmt.Sprint(err)
+		fmt.Println(err)
 		session.Save(r, w)
 	}
 	http.Redirect(w, r, "/", http.StatusSeeOther)
