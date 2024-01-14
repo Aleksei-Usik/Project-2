@@ -1,0 +1,128 @@
+
+    body {
+      font-family: Arial;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      word-wrap: break-word;
+      font-size: larger;
+    }
+
+    div {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+      font-size: larger;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px;
+      padding: 20px;
+    }
+
+    input[type="file"] {
+      border: 1px solid #ddd;
+      background-color: #fff;
+      font-size: medium;
+    }
+
+    input[type="submit"],
+    a {
+      background-color: rgb(25, 25, 25);
+      display: inline-block;
+      color: #ddd;
+      padding: 20px;
+      margin: 10px;
+      width: calc(100% - 60px);
+      font-size: larger;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    input[type="submit"] {
+      width: calc(100% - 20px);
+    }
+
+    a:hover,
+    input:hover {
+      opacity: 0.8;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: larger;
+    }
+
+    .sidenav {
+      border: none;
+      height: 100%;
+      margin: 0px;
+      padding: 5px;
+      width: 0;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: #f0f0f0;
+      transition: 0.2s;
+    }
+
+    .sidenav:hover {
+      width: 250px;
+    }
+
+    .sidenav a {
+      border: 1px solid #ddd;
+      background-color: #fff;
+      display: block;
+      color: rgb(27, 27, 27);
+      word-wrap: normal;
+    }
+
+    .task a {
+      border: 1px solid #ddd;
+      margin-right: 10px;
+      width: 250px;
+    }
+    
+    .compl {
+      background-color: rgb(100, 200, 100);
+      color: rgb(25, 25, 25);
+    }
+    
+    .delete{
+      background-color: rgb(230, 105, 105);
+      color: rgb(25, 25, 25);
+    }
+    
+    .task div {
+      border: none;
+      margin: 0px;
+      margin-left: 10px;
+      padding: 0px;
+    }
+    
+    .task h3, .task p{
+      margin: 0px;
+    }
+    .complete h3{
+      color: rgb(85, 78, 78);
+    }
+    
+    .incomplete p{
+      color: rgb(65, 60, 60);
+    }
+    
+    .incomplete .deadline{
+      color: rgb(230, 105, 105);
+    }
+    
+    .complete p{
+      color: #ab9f9f;
+    }

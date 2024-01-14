@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/content/ico.ico" />
+  <link rel="stylesheet" href="/content/style.css" />
+</head>
+
+<body>
+  <div>
+    <h1>Новая задача</h1>
+    <a href="/">На главную страницу</a>
+  </div>
+  <div>{{.Message}}</div>
+  <div class="sidenav">
+    <a href="/exit">Выйти из аккаунта</a>
+    <a href="/ChangePassword">Поменять пароль</a>
+    <a href="/DeleteAccount">Удалить аккаунт</a>
+  </div>
+  
+  <div>
+    <form action="/new_task" method="post">
+      <input type="hidden" id="id" name="id" value="{{.Datt.ID}}">
+      <input type="text" id="title" name="title" placeholder="Оглавление" value="{{.Datt.Title}}" required><br>
+      <input type="text" id="description" name="description" placeholder="Описание" value="{{.Datt.Description}}" required><br>
+      <input type="datetime-local" id="deadline" name="deadline" placeholder="Срок" min="{{.MinDateTime}}" value="{{.DateTime}}" required><br>
+      <input type="submit" value="Создать">
+    </form> 
+  </div>
+</body>
+</html>

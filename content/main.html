@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/content/ico.ico" />
+  <link rel="stylesheet" href="/content/style.css" />
+  
+</head>
+
+<body>
+  <div><a href = "/new_task">Новая задача</a></div>
+  <div>{{.Message}}</div>
+  <div class="sidenav">
+    <a href="/exit">Выйти из аккаунта</a>
+    <a href="/ChangePassword">Поменять пароль</a>
+    <a href="/DeleteAccount">Удалить аккаунт</a>
+  </div>
+  {{ if .Datt }}
+    {{ range .Datt }}
+    {{ if not .Task.Complete }}
+      <div class="task">
+        <div class="incomplete"><h3>{{ .Task.Title }}</h3> <p> {{.Task.Description}}</p> <p class="deadline">Срок: {{ .Time }}</p> </div>
+        <a href="/complete?id={{.Task.ID}}&val=1" class="compl">Выполнено</a>
+        <a href="/new_task?id={{.Task.ID}}">Изменить</a>
+        <a href="/delete?id={{.Task.ID}}" class="delete">Удалить</a>
+      </div>
+    {{end}}
+    {{ end }}
+    {{ range .Datt }}
+    {{ if .Task.Complete }}
+      <div class="task">
+      <div class="complete"><h3>{{ .Task.Title }}</h3> <p> {{.Task.Description}}</p> <p class="deadline">Срок: {{ .Time }}</p> </div>
+        <a href="/complete?id={{.Task.ID}}&val=0" class="compl">Невыполнено</a>
+        <a href="/delete?id={{.Task.ID}}" class="delete">Удалить</a>
+      </div>
+    {{end}}
+    {{ end }}
+  {{ else }}
+    <div>Ваш список задач пуст</div>
+  {{ end }}
+</body>
+</html>

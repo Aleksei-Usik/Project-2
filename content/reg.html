@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/content/ico.ico" />
+  <link rel="stylesheet" href="/content/style.css" />
+</head>
+
+<body>
+{{ if or (eq . "На указанную вами почту пришел код, чтобы закончить регистрацию введите его в поле ниже") (eq . "Неверный код")}}
+<div>
+  <h1>Подтвердите почту</h1>
+    {{.}}
+    <form method="post" action="/reg">
+      <input type="text" placeholder="Введите код" name="code" required>
+      <input type="submit">
+    </form>
+  </div>
+{{else}}
+  <div>
+    <h1>Регистрация</h1>
+    {{.}}
+    <form method="post" action="/reg">
+      <input type="text" placeholder="Введите email" name="email" required>
+      <input type="text" placeholder="Введите пароль" name="password" required>
+      <input type="submit">
+    </form>
+  </div>
+
+  <div>
+    Уже есть аккаунт?
+    <a href = "/auth">Авторизация</a>
+  </div>
+{{end}}
+</body>
+
+</html>

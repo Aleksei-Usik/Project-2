@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/content/ico.ico" />
+  <link rel="stylesheet" href="/content/style.css" />
+</head>
+
+<body>
+  <div>
+    <h1>Авторизация</h1>
+    {{.}}
+    <form method="post" action="/auth">
+      <input type="text" placeholder="Введите email" name="email" required>
+      <input type="text" placeholder="Введите пароль" name="password" required>
+      <input type="submit">
+    </form>
+  </div>
+  <div>
+    Новый пользователь?
+    <a href = "/reg">Регистрация</a>
+  </div>
+</body>
+
+</html>
